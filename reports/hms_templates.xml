@@ -1,0 +1,84 @@
+<odoo>
+
+    <data>
+        <template id="hms_patient_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="patient">
+                    <t t-call="web.external_layout">
+                        <div class="row">
+                            <div class="col-7">
+                                <h1 style="color:green;">
+                                Patient Status Report
+                                </h1>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-7">
+                                <p>
+                                    <strong>Name:</strong>
+                                    <span t-field="patient.First_name"/>
+                                    <span t-field="patient.Last_name"/>
+                                </p>
+                                <p>
+                                    <strong>Age:</strong>
+                                    <span t-field="patient.Age"/>
+                                </p>
+                                <p>
+                                    <strong>Department:</strong>
+                                    <span t-field="patient.dep_capacity"/>
+                                </p>
+                                <p>
+                                    <strong>Doctors:</strong>
+                                    <span t-field="patient.doctor_ids"/>
+                                </p>
+                            </div>
+                            <div class="col-5">
+                                <p>
+                                    Birth Date:
+                                    <strong>Birth Date:</strong>
+                                    <span t-field="patient.Birth_date"/>
+                                </p>
+                                <p>
+                                    <strong>PCR:</strong>
+                                    <span t-field="patient.PCR"/>
+                                </p>
+                                <p>
+                                    <strong>Blood Type:</strong>
+                                    <span t-esc="patient.Blood_Type"/>
+                                </p>
+                                <p>
+                                    <strong>Email:</strong>
+                                    <span t-field="patient.email"/>
+                                </p>
+                            </div>
+                        </div>
+                        <table class="table report_border table-hover table-striped">
+                            <thead>
+                                <tr style="font-weight:bold; background-color: blue;">
+                                    <th>User</th>
+                                    <th>Date</th>
+                                    <th>Info</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="docs.log" t-as="patient">
+                                    <tr>
+                                        <td>
+                                            <span t-field="patient.user"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="patient.date"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="patient.details"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
